@@ -1,0 +1,6 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "provider": "node",
+  "installCmd": "cd server && npm install",
+  "startCmd": "cd server && node server.js"
+}
