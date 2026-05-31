@@ -1,0 +1,95 @@
+[
+  {
+    "firstName": "hgjh",
+    "lastName": "hfj",
+    "username": "aref",
+    "mobile": "yjfj",
+    "nationalCode": "gfjg",
+    "address": "gdj",
+    "password": "1234",
+    "id": 1,
+    "role": "user",
+    "activities": [
+      {
+        "id": 1779146575428,
+        "type": "give",
+        "title": "dsfs",
+        "description": "dsf",
+        "date": "5/19/2026, 2:52:55 AM"
+      }
+    ],
+    "approved": true
+  },
+  {
+    "id": 999,
+    "firstName": "Admin",
+    "lastName": "Staff",
+    "username": "staff",
+    "password": "123",
+    "role": "employee",
+    "approved": true
+  },
+  {
+    "firstName": "Admin",
+    "lastName": "System",
+    "username": "admin",
+    "mobile": "yjfj",
+    "nationalCode": "gfjg",
+    "address": "gdj",
+    "password": "1234",
+    "id": 2,
+    "role": "admin",
+    "activities": [],
+    "approved": true
+  },
+  {
+    "firstName": "",
+    "lastName": "",
+    "username": "userid",
+    "mobile": "",
+    "nationalCode": "",
+    "address": "",
+    "password": "1234",
+    "id": 3,
+    "role": "user",
+    "activities": [],
+    "approved": true
+  },
+  {
+    "firstName": "Sama",
+    "lastName": "Cheshme",
+    "username": "sama",
+    "mobile": "09",
+    "nationalCode": "002",
+    "address": "kdjfbsd",
+    "password": "1234",
+    "id": 4,
+    "role": "user",
+    "activities": [],
+    "approved": true
+  },
+  {
+    "firstName": "تست تایید ثبت نام و ثبت آگهی",
+    "lastName": "-",
+    "username": "testAdd",
+    "mobile": "09",
+    "nationalCode": "00",
+    "address": "Tehran",
+    "password": "1234",
+    "id": 6,
+    "role": "user",
+    "approved": true
+  },
+  {
+    "firstName": "",
+    "lastName": "",
+    "username": "1",
+    "mobile": "",
+    "nationalCode": "",
+    "address": "",
+    "password": "1",
+    "id": 7,
+    "role": "user",
+    "approved": true
+  }
+]

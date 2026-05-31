@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GHARZI.COM</title>
+
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#143648">
+
+    <meta
+    name="apple-mobile-web-app-capable"
+    content="yes">
+
+    <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default">
+</head>
+
+<body>
+<nav class="navbar" id="mainNavbar" style="display:none;">
+    <button id="menuBtn" class="navBtn">☰</button>
+    <div class="navRight">
+
+        <img
+            src="assets/logo.png"
+            class="navLogo"
+        >
+
+        <h2 class="siteTitle">
+            قرضی
+        </h2>
+
+    </div>
+    <div class="mobileSearchWrapper">
+
+        <button
+            class="navBtn"
+            id="searchBtn"
+        >
+        🔍
+        </button>
+
+        </div>
+
+    
+
+
+    <div class="navLeft">
+
+        <button onclick="openProfile()"
+                class="navBtn">
+            👤
+        </button>
+
+       <!-- <button
+            class="navBtn logoutBtn"
+            onclick="logout()"
+        >
+            خروج
+        </button> -- -->
+
+    </div>
+    
+
+</nav>
+<div id="searchBar">
+
+    <input
+        type="text"
+        placeholder="جستجو..."
+    >
+
+</div>
+<div id="drawer" class="drawer">
+
+    <button class="drawerItem">🏠 خانه</button>
+
+    <button class="drawerItem">💬 پیام‌ها</button>
+
+    <button class="drawerItem">👤 پروفایل</button>
+
+    <button class="drawerItem">🛠 پشتیبانی</button>
+
+</div>
+<div id="drawerOverlay"></div>
+<div class="container">
+
+    <div id="authBox">
+
+        <div class="authCard">
+
+            <h1 class="authTitle">
+                GHARZI.COM
+            </h1>
+
+            <div class="authTabs">
+
+                <button
+                    id="loginTabBtn"
+                    class="activeAuth"
+                    onclick="showLogin()"
+                >
+                    ورود
+                </button>
+
+                <button
+                    id="registerTabBtn"
+                    onclick="showRegister()"
+                >
+                    ثبت نام
+                </button>
+
+            </div>
+
+            <!-- LOGIN -->
+
+            <div
+                id="loginBox"
+                class="authBoxSection active"
+            >
+
+                <input type="text" placeholder="نام کاربری">
+
+                <input type="password" placeholder="رمز عبور">
+
+                <button
+                    class="authSubmit"
+                    onclick="login()"
+                >
+                    ورود به حساب
+                </button>
+
+            </div>
+
+            <!-- REGISTER -->
+
+            <div
+                id="registerBox"
+                class="authBoxSection"
+            >
+
+                <input type="text" placeholder="نام">
+
+                <input type="text" placeholder="نام خانوادگی">
+
+                <input type="text" placeholder="نام کاربری">
+
+                <input type="text" placeholder="موبایل">
+
+                <input type="text" placeholder="کد ملی">
+
+                <textarea placeholder="آدرس"></textarea>
+
+                <input type="password" placeholder="رمز عبور">
+
+                <button
+                    class="authSubmit"
+                    onclick="register()"
+                >
+                    ایجاد حساب
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="explorePage" class="mobilePage">
+
+        <h2>اکسپلور آگهی‌ها</h2>
+
+        <div id="explorePosts"></div>
+
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <div id="dashboard" class="mobilePage">
+
+        <div
+    id="employeePanel"
+    style="display:none;"
+>
+
+    <h2>
+        تایید کاربران
+    </h2>
+
+    <div id="pendingUsers">
+
+    </div>
+
+    <h2 style="margin-top:40px;">
+        تایید آگهی‌ها
+    </h2>
+
+    <div id="pendingPosts">
+
+    </div>
+
+</div>
+    <!-- USER PANEL -->
+    <div id="userPanel" style="display:none;">
+        <div class="toggleWrapper">
+
+            <div class="toggleBox">
+
+                <div id="toggleIndicator"></div>
+
+                <button id="giveBtn"
+                        onclick="showTab('give')">
+
+                    می‌دهم
+
+                </button>
+
+                <button id="takeBtn"
+                        onclick="showTab('take')">
+
+                    می‌گیرم
+
+                </button>
+
+            </div>
+
+        </div>
+
+       
+
+        <div id="giveTab" class="pageSection active">
+
+            <h3>آگهی‌های من</h3>
+            <div id="giveActivities" class="postsGrid"></div>
+
+        </div>
+        <div id="takeTab" class="pageSection">
+
+            <h3>آگهی‌های دیگران</h3>
+
+            <div id="takeActivities" class="postsGrid"></div>
+        </div>
+
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel" style="display:none;">
+
+        <h2 style="margin-top:40px;">
+            مدیریت آگهی‌ها
+        </h2>
+
+        <div id="adminPosts"></div>
+
+        <h2>لیست کاربران</h2>
+
+        <div id="usersList"></div>
+
+    </div>
+</div>
+<!-- POST MODAL -->
+
+<div id="postModal" class="modal">
+
+    <div class="modalContent">
+
+        <span class="closeModal"
+              onclick="closePostModal()">
+            ×
+        </span>
+
+        <h2>ثبت آگهی</h2>
+
+        <select id="postType">
+
+            <option value="give">
+                می‌دهم
+            </option>
+
+            <option value="take">
+                می‌گیرم
+            </option>
+
+        </select>
+
+        <input
+            type="text"
+            id="postTitle"
+            placeholder="عنوان آگهی"
+        >
+
+        <textarea
+            id="postDescription"
+            placeholder="توضیحات"
+        ></textarea>
+
+        <input
+            type="text"
+            id="postCategory"
+            placeholder="دسته‌بندی"
+        >
+
+        <input
+            type="text"
+            id="postCity"
+            placeholder="شهر"
+        >
+
+        <button onclick="submitPost()">
+            ثبت آگهی
+        </button>
+
+    </div>
+
+</div>
+<div id="profileModal" class="modal">
+
+    <div class="modalContent profileModal">
+
+        <span class="closeModal"
+              onclick="closeProfile()">
+            ×
+        </span>
+
+        <div class="profileTop">
+
+            <img
+                src="assets/default.jpg"
+                class="profileAvatar"
+            >
+
+            <h2 id="profileName"></h2>
+
+            <p id="profileUsername"></p>
+
+        </div>
+
+        <div class="profileInfo">
+
+            <p id="profileMobile"></p>
+
+            <p id="profileAddress"></p>
+
+        </div>
+
+        <button 
+            id="profileLogoutBtn"
+            class="logoutBtn"
+                onclick="logout()">
+
+            خروج از حساب
+
+        </button>
+
+    </div>
+
+</div>
+<div class="modal" id="postDetailsModal">
+
+    <div class="modalContent">
+
+        <span
+            class="closeModal"
+            onclick="closeModal('postDetailsModal')"
+        >
+            ×
+        </span>
+
+        <div id="postDetailsBody"></div>
+
+    </div>
+
+</div>
+<script src="app.js"></script>
+<div id="messagesPage"  class="mobilePage">
+
+    <div class="container">
+
+        <div class="messagesHeader">
+
+            <button
+                class="backBtn"
+                onclick="openHomePage()"
+            >
+                ← بازگشت
+            </button>
+
+            <h2>پیام‌ها</h2>
+
+        </div>
+
+        <div id="conversationsList"></div>
+
+    </div>
+
+</div>
+<div id="chatModal" class="modal">
+
+    <div class="modalContent">
+
+        <span
+            class="closeModal"
+            onclick="closeChat()"
+        >
+            ×
+        </span>
+
+        <h2>گفتگو</h2>
+
+        <div id="chatMessages"></div>
+
+        <input
+            type="text"
+            id="chatInput"
+            placeholder="پیام..."
+        >
+
+        <button onclick="sendMessage()">
+            ارسال
+        </button>
+
+    </div>
+
+</div>
+<!-- MOBILE NAVBAR -->
+<button class="floatingAddBtn" onclick="openSupport()">
+🛠
+</button>
+</html>
